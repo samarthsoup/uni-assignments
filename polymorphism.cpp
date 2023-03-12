@@ -39,7 +39,7 @@ int main() {
    int recWidthInput,recHeightInput,triWidthInput,triHeightInput;
    Shape *shape;
    Rectangle rec(recWidthInput,recHeightInput);
-   Triangle  tri(triWidthInput,triHeightInput);
+   Triangle tri(triWidthInput,triHeightInput);
 
    cout << "input values for rectangle width and height\n";
    cin >> recWidthInput;
