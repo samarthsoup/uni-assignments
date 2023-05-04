@@ -46,6 +46,15 @@
         "typeinfo": "cpp",
         "complex": "cpp",
         "fstream": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "unordered_set": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "regex": "cpp",
+        "valarray": "cpp",
+        "future": "cpp",
+        "variant": "cpp"
     }
 }
