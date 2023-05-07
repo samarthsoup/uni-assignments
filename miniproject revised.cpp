@@ -6,12 +6,12 @@ class theatre{
         void viewMovies();
         int bookTickets();
 
-        vector<tuple<int, string, string, int, int>>timingsAUDI; //timing index, timing, audi number, regular seat price, premium price
+        vector<tuple<int, string, string, int, int>>timingsAUDI;
         vector<tuple<int, string, float, float>> movies; //movie number, name, duration, rating
         vector<int>quant;
 
         vector<int>quant1;
-        vector<tuple<int, string, string, int, int>>timingsAUDI1; 
+        vector<tuple<int, string, string, int, int>>timingsAUDI1; //timing index, timing, audi number, regular seat price, premium price
 
         vector<int>quant2;
         vector<tuple<int, string, string, int, int>>timingsAUDI2; 
