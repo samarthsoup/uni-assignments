@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//assumptions made: there is only one screen, the user will only have to go through the booking process once
+
 const int NUM_MOVIES = 3;
 
 struct Movie {
