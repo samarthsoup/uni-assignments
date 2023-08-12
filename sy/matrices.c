@@ -17,11 +17,11 @@ void readMatrix(int matrix[][10], int row, int column, int matrix_id) {
     }
 }
 
-void displayMatrix(int result[][10], int row, int column, char type[]) {
+void displayMatrix(int matrix[][10], int row, int column, char type[]) {
     printf("\n%s matrix:\n", type);
     for (int i = 0; i < row; i++) {
         for (int j = 0; j < column; j++) {
-            printf("%d  ", result[i][j]);
+            printf("%d  ", matrix[i][j]);
             if (j == column - 1)
                 printf("\n");
         }
@@ -83,11 +83,6 @@ int main() {
     int first[10][10], second[10][10], result[10][10], r1, c1, r2, c2, choice;
 
     while (1) {
-        for (int i = 0; i < r1; i++) {
-            for (int j = 0; j < c2; j++) {
-                result[i][j] = 0;
-            }
-        }
         printf("1:addition\n2:subtraction\n3:multiplication\n4:transpose\n5:exit\n");
         scanf("%d",&choice);
 
@@ -99,7 +94,7 @@ int main() {
                 readMatrix(first, r1, c1, 1);
                 readMatrix(second, r1, c1, 2);
                 displayMatrix(first, r1, c1, "first");
-                displayMatrix(second, r2, c2, "second");
+                displayMatrix(second, r1, c1, "second");
                 addSubtractMatrices(first, second, result, r1, c1, '+');
                 displayMatrix(result, r1, c1, "sum");
                 break;
@@ -110,7 +105,7 @@ int main() {
                 readMatrix(first, r1, c1, 1);
                 readMatrix(second, r1, c1, 2);
                 displayMatrix(first, r1, c1, "first");
-                displayMatrix(second, r2, c2, "second");
+                displayMatrix(second, r1, c1, "second");
                 addSubtractMatrices(first, second, result, r1, c1, '-');
                 displayMatrix(result, r1, c1, "difference");
                 break;
@@ -127,7 +122,7 @@ int main() {
                     c2 = matrix2.c; r2 = matrix2.r;
                 }
                 readMatrix(first, r1, c1, 1);
-                readMatrix(second, r1, c1, 2);
+                readMatrix(second, r2, c2, 2);
                 displayMatrix(first, r1, c1, "first");
                 displayMatrix(second, r2, c2, "second");
                 multiplyMatrices(first, second, result, r1, c1, r2, c2);
