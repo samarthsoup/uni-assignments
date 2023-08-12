@@ -78,6 +78,14 @@ void transposeMatrix(int matrix[][10], int transpose[][10], int r, int c) {
     }
 }
 
+void reset(int matrix[][10], int r, int c) {
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            matrix[i][j] = 0;
+        }
+    }
+}
+
 
 int main() {
     int first[10][10], second[10][10], result[10][10], r1, c1, r2, c2, choice;
@@ -97,6 +105,7 @@ int main() {
                 displayMatrix(second, r1, c1, "second");
                 addSubtractMatrices(first, second, result, r1, c1, '+');
                 displayMatrix(result, r1, c1, "sum");
+                reset(result, r1, c1);
                 break;
             case 2:
                 struct matrixDimensions square_matrix_0 = scanMatrixDimensions(1);
@@ -108,6 +117,7 @@ int main() {
                 displayMatrix(second, r1, c1, "second");
                 addSubtractMatrices(first, second, result, r1, c1, '-');
                 displayMatrix(result, r1, c1, "difference");
+                reset(result, r1, c1);
                 break;
             case 3:
                 struct matrixDimensions matrix1 = scanMatrixDimensions(1);
@@ -127,6 +137,7 @@ int main() {
                 displayMatrix(second, r2, c2, "second");
                 multiplyMatrices(first, second, result, r1, c1, r2, c2);
                 displayMatrix(result, r1, c2, "product");
+                reset(result, r1, c2);
                 break;
             case 4:
                 struct matrixDimensions transpose_matrix = scanMatrixDimensions(1);
@@ -135,6 +146,7 @@ int main() {
                 displayMatrix(first, r1, c1, "entered");
                 transposeMatrix(first, result, r1, c1);
                 displayMatrix(result, r1, c1, "transpose");
+                reset(result, r1, c1);
                 break;
             case 5:
                 exit(0);
