@@ -35,14 +35,14 @@ void binary_search(struct Student records[], int low, int high, int target_prn, 
 	struct Student temp;
 	
 	for (int i = 0; i < num_records-1; i++){
-        	for (int j = 0; j < (num_records-1-i); j++){
-            		if (records[j].prn < records[j + 1].prn){
-                	temp = records[j];
-                	records[j] = records[j + 1];
-                	records[j + 1] = temp;
-            		} 
-        	}
-    	}
+        for (int j = 0; j < (num_records-1-i); j++){
+            if (records[j].prn < records[j + 1].prn){
+            	temp = records[j];
+                records[j] = records[j + 1];
+                records[j + 1] = temp;
+            } 
+        }
+    }
 	    
 	while(low <= high){
 		int mid = low + (high - low)/2;
