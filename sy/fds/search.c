@@ -6,7 +6,7 @@ struct Student{
 	char name[20];
 };
 
-void search(struct Student records[], int target_prn, int size){
+void linear_search(struct Student records[], int target_prn, int size){
 	int flag = 0;
 	int counter = 1;
 	for(int i=0;i<size;i++){
@@ -24,25 +24,8 @@ void search(struct Student records[], int target_prn, int size){
 	printf("number of comparisons: %d\n\n", counter);
 }
 
-void display_records(int num_records, struct Student records[]){
-	for(int i=0;i<num_records;i++){
-		   printf("prn: %d, name: %s\n",records[i].prn, records[i].name);
-	}
-}
-
-void binary_search(struct Student records[], int low, int high, int target_prn, int num_records){
+void binary_search(int num_records, struct Student records[], int low, int high, int target_prn){
 	int counter = 1;
-	struct Student temp;
-	
-	for (int i = 0; i < num_records-1; i++){
-        for (int j = 0; j < (num_records-1-i); j++){
-            if (records[j].prn < records[j + 1].prn){
-            	temp = records[j];
-                records[j] = records[j + 1];
-                records[j + 1] = temp;
-            } 
-        }
-    }
 	    
 	while(low <= high){
 		int mid = low + (high - low)/2;
@@ -61,6 +44,52 @@ void binary_search(struct Student records[], int low, int high, int target_prn, 
 	printf("number of comparisons: %d\n", counter);
 }
 
+void selection_sort(int num_records, struct Student records[]) {
+	struct Student temp;
+	
+	for(int i=0;i<num_records-1;i++){
+		int min_index = i;
+		for(int j=i+1;j<num_records;j++){
+			if(records[j].prn < records[min_index].prn){
+				min_index = j;
+			}	
+		}
+		temp = records[min_index];
+		records[min_index]=records[i];
+		records[i]=temp;
+	}
+}
+
+void insertion_sort(int num_records, struct Student records[]) {
+	struct Student key;
+	
+	for(int i=1; i<num_records; i++){
+		key = records[i];
+		int j=i-1;
+		
+		while (j >= 0 && records[j].prn > key.prn) {
+		      records[j+1] = records[j];
+		      j=j-1;
+		}
+		records[j+1]=key;
+	}
+}
+
+void shell_sort(int num_records, struct Student records[]) {
+	struct Student temp;
+	
+	for (int interval = num_records/2; interval>0; interval/=2) {
+		for (int i=interval; i<num_records; i++) {
+			temp = records[i];
+			int j;
+			for(j=i; j>=interval && records[j-interval].prn>temp.prn; j-=interval){
+				records[j]=records[j-interval];
+			}
+			records[j]=temp;
+		}
+	}
+}
+
 void input(int num_records, struct Student records[]){
 	for(int i=0;i<num_records;i++){
 		printf("enter data for student %d\n", i+1);
@@ -69,6 +98,12 @@ void input(int num_records, struct Student records[]){
 		printf("\nenter name for student %d\n", i+1);
 		scanf("%s", records[i].name);
 		printf("\n\n");
+	}
+}
+
+void display_records(int num_records, struct Student records[]){
+	for(int i=0;i<num_records;i++){
+		   printf("prn: %d, name: %s\n",records[i].prn, records[i].name);
 	}
 }
 
@@ -81,12 +116,17 @@ int main(){
 	input(num_records, students);
 	display_records(num_records, students);
 	
+	printf("\nafter shell sort\n");
+	
+	shell_sort(num_records, students);
+	display_records(num_records, students);
+	
 	printf("who are you looking for?(use prn)\n");
 	scanf("%d", &target_prn);
 	
-	search(students, target_prn, num_records);
+	linear_search(students, target_prn, num_records);
 	
-	binary_search(students, 0, num_records-1, target_prn, num_records);
+	binary_search(num_records, students, 0, num_records-1, target_prn);
 	
 	return 0;
 	
